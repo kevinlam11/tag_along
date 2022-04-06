@@ -23,8 +23,8 @@ Event.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    needed_funding: {
-      type: DataTypes.FLOAT,
+    day: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
