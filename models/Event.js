@@ -40,8 +40,8 @@ Event.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'event',
   }
 );
 
-module.exports = Project;
+module.exports = Event;
