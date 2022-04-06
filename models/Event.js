@@ -24,7 +24,7 @@ Event.init(
       defaultValue: DataTypes.NOW,
     },
     day: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     time: {
