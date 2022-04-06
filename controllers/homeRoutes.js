@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const { User, Project } = require('../models');
+const { User, Event } = require('../models');
 
 router.get('/', async (req, res) => {
-  const projectData = await Project.findAll({
+  const eventData = await Event.findAll({
     include: [User],
   });
 
-  const projects = projectData.map((project) => {
-    return project.get({ plain: true });
+  const events = eventData.map((event) => {
+    return event.get({ plain: true });
   });
-  console.log(projects);
+  console.log(events);
 
-  res.render('all', { projects });
+  res.render('all', { events });
 });
 
 module.exports = router;
