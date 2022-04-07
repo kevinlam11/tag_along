@@ -12,6 +12,11 @@ router.get('/signup', (req, res) => {
   // Render handlebars sign up page.
   res.render('signup');
 });
+// Add Events
+router.get('/newevent', (req, res) => {
+  // Render handlebars add events page.
+  res.render('newevent');
+});
 
 // View All Events
 router.get('/events', (req, res) => {
