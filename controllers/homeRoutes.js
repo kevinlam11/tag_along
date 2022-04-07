@@ -6,6 +6,7 @@ router.get('/login', (req, res) => {
   // render login
   res.render('login');
 });
+
 // Sign Up
 router.get('/signup', (req, res) => {
   // Render handlebars sign up page.
@@ -19,6 +20,9 @@ router.get('/events', (req, res) => {
 });
 
 router.get('/', async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  }
   const eventData = await Event.findAll({
     include: [User],
   });
