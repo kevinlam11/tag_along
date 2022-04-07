@@ -11,6 +11,11 @@ router.get('/signup', (req, res) => {
   // Render handlebars sign up page.
   res.render('signup');
 });
+// View Events
+router.get('/events', (req, res) => {
+  // Render handlebars view events page.
+  res.render('events');
+});
 
 router.get('/', async (req, res) => {
   const eventData = await Event.findAll({
