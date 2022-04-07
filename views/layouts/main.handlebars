@@ -21,6 +21,9 @@
 <body>
   <main>
     {{{ body }}}
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </main>
 
 <div class="modal fade" id="newEventModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
