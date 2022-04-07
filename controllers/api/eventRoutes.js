@@ -38,7 +38,7 @@ router.put('/:id', async (req, res) => {
     const updatedEvent = await Event.update(req.body, {
       where: {
         id: req.params.id,
-      }
+      },
     });
     res.json(updatedEvent);
   } catch (err) {

@@ -11,7 +11,7 @@ Event.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -27,7 +27,7 @@ Event.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
+    time: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
