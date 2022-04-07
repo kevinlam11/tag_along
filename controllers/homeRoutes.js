@@ -17,6 +17,12 @@ router.get('/events', (req, res) => {
   res.render('events');
 });
 
+// View All Events
+router.get('/events', (req, res) => {
+  // Render handlebars view events page.
+  res.render('events');
+});
+
 router.get('/', async (req, res) => {
   const eventData = await Event.findAll({
     include: [User],
