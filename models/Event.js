@@ -23,11 +23,7 @@ Event.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    day: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    time: {
+    day_and_time: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
