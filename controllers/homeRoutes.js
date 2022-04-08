@@ -13,7 +13,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// // dashboard
+// dashboard
 router.get('/dashboard', (req, res) => {
   // render login
   res.render('dash');

@@ -1,5 +1,5 @@
 function createEvent(event) {
-  event.preventDefault();
+  event.stopPropagation();
 
   const title = document.getElementById('eventName').value.trim();
   const description = document.getElementById('eventDesc').value.trim();
@@ -8,7 +8,7 @@ function createEvent(event) {
   if (event.target.matches("#createEvent")) {
     console.log(dt)
   
-    if (title && description && dt) {
+    if (title && description) {
       fetch('/api/events', {
         method: 'POST',
         body: JSON.stringify({ title, description }),
@@ -22,7 +22,4 @@ function createEvent(event) {
   }
 }
 
-// document.addEventListener('click', createEvent);
-// when new event is clicked, a modal pops up with the form
-// when form submit is hit, input data is stored
-// when form submit is hit, modal displays Event Created! and a close modal button
+document.addEventListener('click', createEvent);
