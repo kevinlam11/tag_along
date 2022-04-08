@@ -22,7 +22,7 @@ function createEvent(event) {
 
 document.getElementById('createEvent').addEventListener('submit', console.log('clicked'));
 // event name
-// to do: moment.js implementation into date and time
+// to do: make date time local string into something humans can read
 // user name
 // description
 // how many people have RSVP'd
