@@ -2,31 +2,37 @@ const router = require('express').Router();
 const { User, Event } = require('../models');
 
 // login
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
   // render login
   res.render('login');
 });
 
 // Sign Up
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
   // Render handlebars sign up page.
   res.render('signup');
 });
 
-// dashboard
-router.get('/dashboard', (req, res) => {
+// // dashboard
+router.get('/dashboard', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true });
+    res.render('dash', { user });
+  } catch (err) {
+    console.log(err);
+  }
   // render login
-  res.render('dash');
 });
 
 // Add Events
-router.get('/newevent', (req, res) => {
+router.get('/newevent', async (req, res) => {
   // Render handlebars add events page.
   res.render('newevent');
 });
 
 // View All Events
-router.get('/events', (req, res) => {
+router.get('/events', async (req, res) => {
   // Render handlebars view events page.
   res.render('events');
 });
