@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
+<body> --}}
   <form id="dash-form">
   <header>
   <h1>Dashboard</h1>
@@ -14,12 +14,14 @@
   <h1 class="display-4">Hello, {{user.username}}</h1>
 </div>
   </header>
-{{#each events}}
+{{#each events as |event| }}
   <article>
-    <h2>{{title}}</h2>
-    <p>{{description}}</p>
-    <p>{{day_and_time}}</p>
+    <h2>{{event.title}}</h2>
+    <p>{{event.description}}</p>
+    <p>{{event.format_time}}</p>
+    <p>{{event.format_date}}</p>
   </article>
 {{/each}}
-
+{{!-- </body> --}}
+</form>
 <script src="/js/newevent.js"></script>

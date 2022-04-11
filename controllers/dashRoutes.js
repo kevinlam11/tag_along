@@ -3,10 +3,10 @@ const router = require('express').Router();
 
 // If not logged in, redirect to login page
 router.get('/', async (req, res) => {
-  if (!req.session.logged_in) {
+  if (!req.session.loggedIn) {
     return res.redirect('/login');
   }
-// else go to dashboard page.
+  // else go to dashboard page.
   return res.redirect('/dashboard', { posts });
 });
 
