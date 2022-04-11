@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
     const newEvent = await Event.create({
       title: req.body.title,
       description: req.body.description,
+      day_and_time: req.body.day_and_time,
     });
 
     res.status(200).json(newEvent);
