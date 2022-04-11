@@ -24,6 +24,7 @@ router.get('/dashboard', async (req, res) => {
       // Render events to dashboard
       const eventData = await Event.findAll({
         include: [User],
+        order: [['day_and_time', 'ASC']]
       });
       const events = eventData.map((event) => {
         return event.get({ plain: true });
