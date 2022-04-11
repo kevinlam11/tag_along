@@ -6,8 +6,10 @@ const path = require('path');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const roleClaim = require('./role-claim.js')
+const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
 require('dotenv').config(); //initialize dotenv
-const { Client, Intents } = require('discord.js'); //import discord.js
 
 const app = express();
 const hbs = exphbs.create({});
@@ -39,18 +41,63 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-});
+  intents: [
+    Intents.FLAGS.GUILDS, 
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_BANS, 
+    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+    Intents.FLAGS.GUILD_INTEGRATIONS,
+    Intents.FLAGS.GUILD_WEBHOOKS,
+    Intents.FLAGS.GUILD_INVITES,
+    Intents.FLAGS.GUILD_VOICE_STATES,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_PRESENCES,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.GUILD_MESSAGE_TYPING,
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+    Intents.FLAGS.GUILD_SCHEDULED_EVENTS
+  ]
+})
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+
+  const guildId = '960969855538974730';
+  const guild = client.guilds.cache.get(guildId);
+
+  let commands;
+  if (guild) {
+        commands = guild.commands
+      } else {
+        commands = client.application.commands
+      }
+
+  commands.create({
+    name: 'ping',
+    description: 'replies with pong'
+  });
+  roleClaim(client);
 });
 
-client.on('message', (msg) => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isCommand()) {
+    return
   }
-});
+
+  const {commandName, options } = interaction
+
+  if (commandName === 'ping') {
+    interaction.reply({
+      content: 'pong',
+      ephemeral: true,
+    })
+  }
+})
+
+
 
 //make sure this line is the last line
 client.login(process.env.CLIENT_TOKEN); //login bot using token

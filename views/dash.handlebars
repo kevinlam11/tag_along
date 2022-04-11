@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,3 +29,23 @@
     {{/each}}
 
     <script src="/js/newevent.js"></script>
+
+<body> --}}
+  <form id="dash-form">
+  <header>
+  <h1>Dashboard</h1>
+<div class="jumbotron">
+  <h1 class="display-4">Hello, {{user.username}}</h1>
+</div>
+  </header>
+{{#each events as |event| }}
+  <article>
+    <h2>{{event.title}}</h2>
+    <p>{{event.description}}</p>
+    <p>{{event.format_time}}</p>
+    <p>{{event.format_date}}</p>
+  </article>
+{{/each}}
+{{!-- </body> --}}
+</form>
+<script src="/js/newevent.js"></script>
