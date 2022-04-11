@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tag Along</title>
-</head>
-
-<body>
-  <form id="dash-form">
-    <header>
-      <h1>Dashboard</h1>
-      <div class="container">
-        <h2>Hello, {{user.username}}! Here are the latest events:</h2>
-      </div>
-    </header>
-    {{#each events as |event|}}
+<form id='dash-form'>
+  <header>
+    <h1>Dashboard</h1>
+    <div class='container'>
+      <h2>Hello, {{user.username}}! Here are the latest events:</h2>
+    </div>
+  </header>
+  {{#each events as |event|}}
     <article>
-      <div class="card bg-dark">
-        <div class="card-header">
+      <div class='card bg-dark'>
+        <div class='card-header'>
           <h3>{{event.title}}</h3>
-        <h5 class="card-title" align="right">{{event.format_date}} {{event.format_time}}</h5>
+          <h5 class='card-title' align='right'>{{event.format_date}}
+            {{event.format_time}}</h5>
         </div>
-        <p class="card-text">{{event.description}}</p>
+        <p class='card-text'>{{event.description}}</p>
       </div>
     </article>
-    {{/each}}
+  {{/each}}
 
-    <script src="/js/newevent.js"></script>
-
+</form>

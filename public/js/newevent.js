@@ -1,5 +1,6 @@
 // Take in input from modal form to be sent to post request.
 function createEvent(event) {
+  // event.preventDefault();
   const title = document.getElementById('eventName').value.trim();
   const description = document.getElementById('eventDesc').value.trim();
   const day_and_time = document.querySelector('#dateTime').value;
@@ -15,6 +16,7 @@ function createEvent(event) {
         })
         .then((data) => {
           console.log(data);
+          window.location.reload();
         });
     }
   }
