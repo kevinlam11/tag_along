@@ -10,15 +10,16 @@
   <form id="dash-form">
   <header>
   <h1>Dashboard</h1>
-  
- 
-
 <div class="jumbotron">
-  <h1 class="display-4">Hello,{{user.username}}</h1>
+  <h1 class="display-4">Hello, {{user.username}}</h1>
 </div>
   </header>
-  </header>
-  {{!-- <h2>Hi {{login-username}}, sdkgjhsdfkgjh</h2> --}}
-</body>
-</html>
-<script src="/js/dash.js"></script>
+{{#each events}}
+  <article>
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <p>{{day_and_time}}</p>
+  </article>
+{{/each}}
+
+<script src="/js/newevent.js"></script>

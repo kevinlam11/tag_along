@@ -24,11 +24,11 @@ Event.init(
       defaultValue: DataTypes.NOW,
     },
     day_and_time: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+      type: DataTypes.DATE,
+      // references: {
+      //   model: 'user',
+      //   key: 'id',
+      // },
     },
   },
   {
