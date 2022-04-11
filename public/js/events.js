@@ -5,7 +5,7 @@ function createEvent(event) {
   const title = document.getElementById('eventName').value.trim();
   const description = document.getElementById('eventDesc').value.trim();
   const dt = document.querySelector('#dateTime').value;
-  console.log(dt)
+  console.log(dt);
 
   if (title && description && dt) {
     fetch('/api/events', {
