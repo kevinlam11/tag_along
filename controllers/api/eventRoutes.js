@@ -4,7 +4,7 @@ const { Event } = require('../../models');
 // Get all Events
 router.get('/', async (req, res) => {
   try {
-    const eventData = await Event.findAll({sort: [day_and_time, descending]});
+    const eventData = await Event.findAll({sort: [format_date, descending]});
     // console.log(eventData);
     res.json(eventData);
   } catch (err) {
