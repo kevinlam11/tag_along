@@ -12,4 +12,4 @@ var logoutFunction = async function () {
 
 if (document.querySelector('#logout')) {
   document.querySelector('#logout').addEventListener('click', logoutFunction);
-}
+
