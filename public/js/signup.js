@@ -16,12 +16,14 @@ function handleSignupForm(event) {
       console.log('RESPONSE', response);
       // If the response is 200, redirect to the dashboard
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         alert('Failed to sign up.');
       }
     });
   }
-};
+}
 
-document.getElementById('signup-form').addEventListener('submit', handleSignupForm);
+document
+  .getElementById('signup-form')
+  .addEventListener('submit', handleSignupForm);

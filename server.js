@@ -7,6 +7,7 @@ const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
 const roleClaim = require('./utils/role-claim.js')
 const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
 require('dotenv').config(); //initialize dotenv
@@ -42,9 +43,9 @@ sequelize.sync({ force: false }).then(() => {
 
 const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS, 
+    Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_BANS, 
+    Intents.FLAGS.GUILD_BANS,
     Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
     Intents.FLAGS.GUILD_INTEGRATIONS,
     Intents.FLAGS.GUILD_WEBHOOKS,
@@ -58,9 +59,9 @@ const client = new Client({
     Intents.FLAGS.DIRECT_MESSAGES,
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-    Intents.FLAGS.GUILD_SCHEDULED_EVENTS
-  ]
-})
+    Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
+  ],
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -70,34 +71,32 @@ client.on('ready', () => {
 
   let commands;
   if (guild) {
-        commands = guild.commands
-      } else {
-        commands = client.application.commands
-      }
+    commands = guild.commands;
+  } else {
+    commands = client.application.commands;
+  }
 
   commands.create({
     name: 'ping',
-    description: 'replies with pong'
+    description: 'replies with pong',
   });
   roleClaim(client);
 });
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) {
-    return
+    return;
   }
 
-  const {commandName, options } = interaction
+  const { commandName, options } = interaction;
 
   if (commandName === 'ping') {
     interaction.reply({
       content: 'pong',
       ephemeral: true,
-    })
+    });
   }
-})
-
-
+});
 
 //make sure this line is the last line
 client.login(process.env.CLIENT_TOKEN); //login bot using token
