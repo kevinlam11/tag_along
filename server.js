@@ -7,12 +7,9 @@ const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const roleClaim = require('./utils/role-claim.js');
-const {
-  Client,
-  Intents,
-  CommandInteractionOptionResolver,
-} = require('discord.js');
+
+const roleClaim = require('./utils/role-claim.js')
+const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
 require('dotenv').config(); //initialize dotenv
 
 const app = express();

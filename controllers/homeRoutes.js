@@ -19,6 +19,7 @@ router.get('/dashboard', async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id);
     const user = userData ? userData.get({ plain: true }) : null;
+
     // Only if there is user data events will render to the page.
     if (userData) {
       // Render events to dashboard
