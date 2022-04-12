@@ -1,19 +1,26 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
- html, html * {
-     font-family: Roboto;
-     /* background-color: #424649; */
+html,
+html * {
+  font-family: Roboto;
+  /* background-color: #424649; */
 }
 nav > h1 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
- body {
-     background-color:#424649;
+body {
+  background-color: #424649;
 }
- body > h1, h2, h3, h4, h5, h6, strong {
-     color:#FFFFFF;
+body > h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  color: #ffffff;
 }
- html > body {
-     color:#8f9093;
+html > body {
+  color: #8f9093;
 }
 
 .navList {
@@ -35,9 +42,16 @@ nav > h1 {
   width: 50%;
   margin-left: 25%;
   align-self: center;
-  padding-left: 5px; 
+  padding-left: 5px;
+  margin-bottom: 1%;
+  -webkit-box-shadow: 5px 5px 15px 4px #7d7d7d;
+  box-shadow: 5px 5px 15px 4px #7d7d7d;
 }
 
 article {
   padding-bottom: 10px;
+}
+
+.navbar-brand {
+  margin-bottom: 0;
 }
