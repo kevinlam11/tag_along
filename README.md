@@ -1,5 +1,9 @@
 # Tag Along - A Discord Calendar App
 
+## License
+
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Table of Contents
 1. [Description](#description)
 2. [Installation](#installation)
@@ -15,6 +19,15 @@ This is a calendar app for Discord that allows you to create events on the web a
 ## Demo
 [Live Site](https://limitless-cove-90207.herokuapp.com/)
 
+
+ ![Role Creation Gif](/public/images/role.gif) 
+ Example: Creating the role for the discord user by interacting with the message 
+
+
+
+ ![Event Post Gif](/public/images/eventPost.gif) 
+  Example: Posting the event into the discord text channel 
+ 
 ## Usage
 Import the database to view functionality
 

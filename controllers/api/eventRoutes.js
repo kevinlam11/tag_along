@@ -3,10 +3,12 @@ const { Event } = require('../../models');
 const { DateTime } = require('luxon');
 
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const roleClaim = require('../../utils/role-claim');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS] });
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  roleClaim(client);
 });
 
 client.on('interactionCreate', async interaction => {
