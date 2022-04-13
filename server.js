@@ -8,8 +8,10 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
-const roleClaim = require('./utils/role-claim.js')
-const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
+
+// const roleClaim = require('./utils/role-claim.js')
+// const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
+
 require('dotenv').config(); //initialize dotenv
 
 const app = express();
@@ -41,62 +43,65 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-const client = new Client({
-  intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_BANS,
-    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-    Intents.FLAGS.GUILD_INTEGRATIONS,
-    Intents.FLAGS.GUILD_WEBHOOKS,
-    Intents.FLAGS.GUILD_INVITES,
-    Intents.FLAGS.GUILD_VOICE_STATES,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_PRESENCES,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-    Intents.FLAGS.GUILD_MESSAGE_TYPING,
-    Intents.FLAGS.DIRECT_MESSAGES,
-    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-    Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
-  ],
-});
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+// const client = new Client({
+//   intents: [
+//     Intents.FLAGS.GUILDS,
+//     Intents.FLAGS.GUILD_MEMBERS,
+//     Intents.FLAGS.GUILD_BANS,
+//     Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+//     Intents.FLAGS.GUILD_INTEGRATIONS,
+//     Intents.FLAGS.GUILD_WEBHOOKS,
+//     Intents.FLAGS.GUILD_INVITES,
+//     Intents.FLAGS.GUILD_VOICE_STATES,
+//     Intents.FLAGS.GUILD_MESSAGES,
+//     Intents.FLAGS.GUILD_PRESENCES,
+//     Intents.FLAGS.GUILD_MESSAGES,
+//     Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+//     Intents.FLAGS.GUILD_MESSAGE_TYPING,
+//     Intents.FLAGS.DIRECT_MESSAGES,
+//     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+//     Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+//     Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
+//   ],
+// });
 
-  const guildId = '960969855538974730';
-  const guild = client.guilds.cache.get(guildId);
+// client.on('ready', () => {
+//   console.log(`Logged in as ${client.user.tag}!`);
 
-  let commands;
-  if (guild) {
-    commands = guild.commands;
-  } else {
-    commands = client.application.commands;
-  }
+//   const guildId = '960969855538974730';
+//   const guild = client.guilds.cache.get(guildId);
 
-  commands.create({
-    name: 'ping',
-    description: 'replies with pong',
-  });
-  roleClaim(client);
-});
+//   let commands;
+//   if (guild) {
+//     commands = guild.commands;
+//   } else {
+//     commands = client.application.commands;
+//   }
 
-client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isCommand()) {
-    return;
-  }
+//   commands.create({
+//     name: 'ping',
+//     description: 'replies with pong',
+//   });
+//   roleClaim(client);
+// });
 
-  const { commandName, options } = interaction;
 
-  if (commandName === 'ping') {
-    interaction.reply({
-      content: 'pong',
-      ephemeral: true,
-    });
-  }
-});
+// client.on('interactionCreate', async (interaction) => {
+//   if (!interaction.isCommand()) {
+//     return;
+//   }
+
+//   const { commandName, options } = interaction;
+
+//   if (commandName === 'ping') {
+//     interaction.reply({
+//       content: 'pong',
+//       ephemeral: true,
+//     });
+//   }
+// });
+
 
 //make sure this line is the last line
-client.login(process.env.CLIENT_TOKEN); //login bot using token
+// client.login(process.env.CLIENT_TOKEN); //login bot using token

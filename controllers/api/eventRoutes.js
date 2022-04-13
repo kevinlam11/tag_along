@@ -1,5 +1,24 @@
 const router = require('express').Router();
 const { Event } = require('../../models');
+const { DateTime } = require('luxon');
+
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isCommand()) return;
+
+  if (interaction.commandName === 'ping') {
+    await interaction.reply('Pong!');
+  }
+});
+(async () => {
+  await client.login(process.env.CLIENT_TOKEN);
+})();
 
 // Get all Events
 router.get('/', async (req, res) => {
@@ -32,9 +51,16 @@ router.post('/', async (req, res) => {
       description: req.body.description,
       day_and_time: req.body.day_and_time,
     });
-    // HERE, AFTER EVENT CREATE DO WHAT I NEED TO DO
+
+    const thing = await client.channels.fetch('963429654570623056');
+    const dateInstance =  DateTime.fromISO(req.body.day_and_time);
+    const formatted = dateInstance.toLocaleString(DateTime.DATETIME_MED);
+    console.log('THING', thing);
+    thing.send(`${req.body.title}\n${req.body.description}\n${formatted}`);
+
     res.status(200).json(newEvent);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
