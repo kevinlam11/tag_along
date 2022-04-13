@@ -24,6 +24,7 @@ header h1 {
   margin-left: 10px;
   color: #339989;
   size: x-large;
+
 }
 .navList {
   font-weight: bolder;
@@ -65,4 +66,3 @@ header h1 {
 article {
   padding-bottom: 10px;
 }
-
