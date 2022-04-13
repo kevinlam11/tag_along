@@ -2,7 +2,7 @@
   <header>
     <h1>Dashboard</h1>
     <div class='container'>
-      <h2>Hello, {{user.username}}! Here are the latest events:</h2>
+      <h3>Hello, {{user.username}}! Here are the latest events:</h3>
     </div>
   </header>
   {{#each events as |event|}}
@@ -10,12 +10,13 @@
       <div class='card bg-dark'>
         <div class='card-header'>
           <h3>{{event.title}}</h3>
-          <h5 class='card-title' align='right'>{{event.format_date}}
-            {{event.format_time}}</h5>
         </div>
         <p class='card-text'>{{event.description}}</p>
+        <div class="card-footer">
+          <h5 class='card-title' align='right'>{{event.format_date}}
+            {{event.format_time}}</h5>
+            </div>
       </div>
     </article>
   {{/each}}
-
 </form>
