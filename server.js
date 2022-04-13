@@ -7,8 +7,14 @@ const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
 // const roleClaim = require('./utils/role-claim.js')
 // const { Client, Intents, CommandInteractionOptionResolver } = require('discord.js');
+
 require('dotenv').config(); //initialize dotenv
 
 const app = express();
@@ -39,6 +45,7 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
+
 
 // const client = new Client({
 //   intents: [
@@ -96,6 +103,7 @@ sequelize.sync({ force: false }).then(() => {
 //     });
 //   }
 // });
+
 
 //make sure this line is the last line
 // client.login(process.env.CLIENT_TOKEN); //login bot using token
