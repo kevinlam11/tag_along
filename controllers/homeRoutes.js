@@ -18,13 +18,14 @@ router.get('/signup', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id);
-    const user = userData.get({ plain: true });
+    const user = userData ? userData.get({ plain: true }) : null;
+    
     // Only if there is user data events will render to the page.
     if (userData) {
       // Render events to dashboard
       const eventData = await Event.findAll({
         include: [User],
-        order: [['day_and_time', 'ASC']]
+        order: [['day_and_time', 'ASC']],
       });
       const events = eventData.map((event) => {
         return event.get({ plain: true });
@@ -44,6 +45,8 @@ router.get('/dashboard', async (req, res) => {
 router.get('/', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
+  } else {
+    res.redirect('/dashboard');
   }
 });
 

@@ -11,6 +11,8 @@ module.exports = client => {
     no: 'no',
   }
 
+  // const attendingRole = message.guild.roles.cache.find(role => role.name === 'Attend')
+
   const reactions = [];
 
   let emojiText = 'Add a reaction to claim a role\n\n';
@@ -30,7 +32,7 @@ module.exports = client => {
     if (user.id === process.env.BOT_ID){
       return
     }
-    console.log(reaction);
+    // console.log(reaction);
     const emoji = reaction._emoji.name
     const { guild } = reaction.message
 
@@ -45,21 +47,21 @@ module.exports = client => {
     if (add) {
       member.roles.add(role)
     } else {
-      members.roles.remove(role)
+      member.roles.remove(role)
     }
   }
 
-  client.on('messageReactionAdd', (reaction, user) => {
-    console.log('add')
+  client.on('messageReactionAdd', async (reaction, user) => {
+    // console.log('add')
     if (reaction.message.channel.id === channelId) {
-      handleReaction(reaction, user, true)
+      await handleReaction(reaction, user, true)
     }
   })
 
-  client.on('messageReactionRemove', (reaction, user) => {
-    console.log('remove')
+  client.on('messageReactionRemove', async (reaction, user) => {
+    // console.log('remove')
     if (reaction.message.channel.id === channelId) {
-      handleReaction(reaction, user, false)
+      await handleReaction(reaction, user, false)
     }
   })
 }
