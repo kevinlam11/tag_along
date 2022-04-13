@@ -3,13 +3,14 @@ const { Event } = require('../../models');
 const { DateTime } = require('luxon');
 
 const { Client, Intents } = require('discord.js');
+const roleClaim = require('../../utils/role-claim');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('interactionCreate', async interaction => {
+client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
   if (interaction.commandName === 'ping') {
@@ -43,7 +44,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create new event
-// TODO: 
+// TODO:
 router.post('/', async (req, res) => {
   try {
     const newEvent = await Event.create({
@@ -53,7 +54,7 @@ router.post('/', async (req, res) => {
     });
 
     const thing = await client.channels.fetch('963429654570623056');
-    const dateInstance =  DateTime.fromISO(req.body.day_and_time);
+    const dateInstance = DateTime.fromISO(req.body.day_and_time);
     const formatted = dateInstance.toLocaleString(DateTime.DATETIME_MED);
     console.log('THING', thing);
     thing.send(`${req.body.title}\n${req.body.description}\n${formatted}`);
