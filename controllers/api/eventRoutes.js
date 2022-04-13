@@ -43,6 +43,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create new event
+// TODO: 
 router.post('/', async (req, res) => {
   try {
     const newEvent = await Event.create({
@@ -50,11 +51,13 @@ router.post('/', async (req, res) => {
       description: req.body.description,
       day_and_time: req.body.day_and_time,
     });
+
     const thing = await client.channels.fetch('963429654570623056');
     const dateInstance =  DateTime.fromISO(req.body.day_and_time);
     const formatted = dateInstance.toLocaleString(DateTime.DATETIME_MED);
     console.log('THING', thing);
     thing.send(`${req.body.title}\n${req.body.description}\n${formatted}`);
+
     res.status(200).json(newEvent);
   } catch (err) {
     console.log(err);
